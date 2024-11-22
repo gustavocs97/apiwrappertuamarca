@@ -1,0 +1,26 @@
+<!-- src/templates/index.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="audio-generator">
+    <h1>Audio Generator</h1>
+    <form id="audioForm">
+        <div class="form-group">
+            <label for="input">Text to Convert:</label>
+            <textarea id="input" name="input" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="voice">Voice:</label>
+            <button type="button" id="fetchVoices">Get Voices</button>
+            <select id="voice" name="voice">
+                <!-- As opções serão preenchidas dinamicamente aqui -->
+            </select>
+        </div>
+        <button type="submit">Generate Audio</button>
+    </form>
+    <div id="resultsContainer">
+        <!-- Os resultados serão preenchidos dinamicamente aqui -->
+    </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,20 @@
+# Ignorar arquivos de variáveis de ambiente de exemplo
+
+#.env.example
+
+
+
+
+# Ignore environment files
+.env
+stack.env
+
+# Ignore temporary and cache files
+*.log
+__pycache__/
+*.pyc
+
+# Ignore temporary directories
+temp_audio/
+temp_images/
+temp_newwrapper_exemplo/

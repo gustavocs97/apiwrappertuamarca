@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  audio-wrapper:
+    image: apiwrappertuamarca  # Nome da imagem que será construída ou usada para o container
+    ports:
+      - "${PORT}:${PORT}" # Porta de acesso do container mapeada para a porta do host
+
+    volumes:
+      - /home/ubuntu/TuaMarca/DockerImagensProprias/apiwrappertuamarca/temp_audio:/app/temp_audio
+      - /home/ubuntu/TuaMarca/DockerImagensProprias/apiwrappertuamarca/temp_images:/app/temp_images  # Mapeia imagens
+      #- /home/ubuntu/TuaMarca/DockerImagensProprias/apiwrappertuamarca/temp_newwrapper_exemplo:/app/temp_newwrapper_exemplo  # Mapeia novo diretório temporário
+
+
+
+
+
+    environment:
+      # Configurações do wrapper (para áudio, imagem e novos wrappers)
+      - API_KEY_OFWRAPPER=${API_KEY_OFWRAPPER}
+      - PORT=${PORT}
+      - LOG_LEVEL=${LOG_LEVEL}
+    
+      # Configurações da API original de áudio
+      - ORIGINAL_API_URL=${ORIGINAL_API_URL}
+      - API_KEY=${API_KEY}
+      - STORAGE_PATH=${STORAGE_PATH}
+      - MAX_STORAGE_TIME=${MAX_STORAGE_TIME}
+    
+      # Configurações da API de imagem
+      - IMAGE_API_URL=${IMAGE_API_URL}
+      - IMAGE_API_KEY=${IMAGE_API_KEY}
+      - IMAGE_STORAGE_PATH=${IMAGE_STORAGE_PATH}
+      - MAX_IMAGE_STORAGE_TIME=${MAX_IMAGE_STORAGE_TIME}
+    
+      # Configurações do novo wrapper (comentadas para possível implementação futura)
+      #- NOVO_WRAPPER_API_URL=${NOVO_WRAPPER_API_URL}
+      #- NOVO_WRAPPER_API_KEY=${NOVO_WRAPPER_API_KEY}
+      #- NOVO_STORAGE_PATH=${NOVO_STORAGE_PATH}
+
+
+
+
+    restart: unless-stopped  # O container será reiniciado automaticamente a menos que seja parado manualmente
+    networks:
+      - minha_rede  # Conecta a rede externa chamada 'minha_rede'
+
+networks:
+  minha_rede:
+    external: true  # Usando uma rede externa existente, certifique-se de que a rede 'minha_rede' já foi criada no Docker
