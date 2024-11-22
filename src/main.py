@@ -40,7 +40,7 @@ from config import Settings  # Importa a classe Settings para acessar configura�
 from routes import audio, views, image  # Roteadores para áudio, views e imagens
 
 # Criação da instância principal da aplicação FastAPI
-app = FastAPI(title="Audio Wrapper API")
+app = FastAPI(title="TuaMarca Wrapper API")
 
 # Configuração para servir arquivos estáticos da pasta "src/static", como imagens ou arquivos JS/CSS
 app.mount("/static", StaticFiles(directory="src/static"), name="static")
